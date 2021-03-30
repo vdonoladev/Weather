@@ -1,0 +1,59 @@
+/* 
+======================================================
+00. Imports
+01. Global variables & Utility classes
+02. Animations
+====================================================== 
+*/
+
+
+// 00. Imports
+@import "custom";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Lato:wght@400;700&display=swap');
+// This test file will override every setting for each element, making it easier to detect errors
+// @import "test"; 
+
+
+// 01. Global variables & Utility classes
+html {
+  font-size: calc(18px + (22 - 18) * ((100vw - 320px) / (1600 - 300))) !important;
+  height: 100%;
+}
+
+body {
+  background-color: darken(#18222d, 5%);
+  font-family: 'Inconsolata', monospace;
+}
+
+.font-size-1 {
+  font-size: 1.25rem;
+  padding-left: .25rem !important;
+  // color: red !important;
+  font-weight: bold;
+}
+
+h6,h5,h4 {
+  font-family: 'Lato', sans-serif;
+}
+
+i {
+  // color: blue;
+  // outline: 1px solid red;
+  margin-top: .25rem;
+  margin-bottom: .25rem;
+}
+
+// 02. Animations
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/all.min.css"> <!-- Font awesome css file -->
+  <link rel="preconnect" href="https://fonts.gstatic.com"> <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="css/main.css">
+  
+</head>
+
+<body class="text-white">
+
+  <main class="container">
+
+    <div class="row d-flex align-content-between vh-100">
+
+      <!-- A) Current location and date CONTENT -->
+      <div class="col-12">
+        <div class="current-location row text-center border-bottom border-primary bg-secondary">
+          <!-- Location city name -->
+          <h4 class="current-location__name col-12 font-weight-bold">Your city</h4>
+          <!-- Location location and hour -->
+          <p class="current-location__date col-12 font-weight-bold col-3 m-0">Date</p>
+        </div>
+      </div>
+
+      <!-- B) Current weather TITLE -->
+      <div class="current-temp__title col-12 d-none d-lg-none justify-content-center align-items-center my-2 my-lg-4">
+        <h5 class="font-weight-bold m-0 p-1 border-top border-bottom border-primary bg-secondary px-3">Current weather</h5>
+      </div>
+
+      <!-- B) Current weather CONTENT -->
+      <div class="col-12 col-md-6 col-lg-5 bg-secondary">
+        <div class="current-temp row d-flex flex-row justify-content-around align-items-center border-bottom border-top border-right border-primary py-lg-2 py-xl-4 h-100">
+          <!-- Current temperature icon -->
+          <div class="col-6 d-flex align-items-center justify-content-center">
+            <img id="current-temp__icon" class="weather-icon rotate" src="/img/placeholder_image_x2.png" alt="" srcset="">
+          </div>
+            <!-- Current temperature description & value -->
+          <div class="col-6 d-flex flex-column text-center">
+            <h2 class="current-temp__value my-1 font-weight-bold">0&deg;</h2>
+            <h5 class="current-temp__description my-1 text-primary font-weight-bold">Description</h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- C) Daily stats CONTENT -->
+      <div class="col-12 col-md-6 col-lg-7 bg-secondary">
+        <div class="daily-stats row text-center border-bottom border-top border-primary h-100">
+          <!-- Max temp box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__max-temp mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              0&deg;
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-long-arrow-alt-up"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Max
+            </div>
+          </div>
+          <!-- Humidity box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__humidity-percentage mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              0
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-tint"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Humidity
+            </div>
+          </div>
+          <!-- Sunrise time box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__sunrise-time mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              00:00
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-sun"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Sunrise
+            </div>
+          </div>
+          <!-- Min temp box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__min-temp mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              0&deg;
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-long-arrow-alt-down"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Min
+            </div>
+          </div>
+          <!-- Rain chance box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__rain-chance mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              0%
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-umbrella"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Rain
+            </div>
+          </div>
+          <!-- Sunset time box -->
+          <div class="daily-stats__content-container col-4 d-flex flex-column flex-lg-row-reverse justify-content-center align-items-center">
+            <!-- Value -->
+            <div class="daily-stats__sunset-time mt-1 mt-lg-0 pl-1 text-primary font-size-1">
+              24:00
+            </div>
+            <!-- Icon -->
+            <div class="mr-lg-1 ml-lg-2">
+              <i class="fas fa-moon"></i>
+            </div>
+            <!-- Sub-title -->
+            <div class="daily-stats__section-subtitle my-1">
+              Sunset
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D) Hourly forecast CONTENT -->
+      <div class="col-12 d-none d-md-inline justify-content-center">
+        <div class="hourly-forecast row d-flex justify-content-around">
+          <!-- Next (1) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (1) hour -->
+            <p class="hourly-forecast__next-1-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (1) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-1" class="weather-icon rotate" src="../img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (1) temps -->
+            <p class="hourly-forecast__next-1-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (4) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (4) hour -->
+            <p class="hourly-forecast__next-4-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (4) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-4" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (4) temps -->
+            <p class="hourly-forecast__next-4-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (7) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (7) hour -->
+            <p class="hourly-forecast__next-7-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (7) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-7" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (7) temps -->
+            <p class="hourly-forecast__next-7-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (10) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (10) hour -->
+            <p class="hourly-forecast__next-10-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (10) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-10" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (10) temps -->
+            <p class="hourly-forecast__next-10-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (13) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (13) hour -->
+            <p class="hourly-forecast__next-13-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (13) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-13" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (13) temps -->
+            <p class="hourly-forecast__next-13-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (16) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (16) hour -->
+            <p class="hourly-forecast__next-16-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (16) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-16" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (16) temps -->
+            <p class="hourly-forecast__next-16-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+          
+          <!-- Next (19) hour forecast card -->
+          <div class="hourly-forecast__content-container col-auto d-flex flex-column justify-content-around align-items-center border border-primary bg-secondary">
+            <!-- Next (19) hour -->
+            <p class="hourly-forecast__next-19-hour--name font-weight-bold m-0">00:00</p>
+            <!-- Next (19) forecast icon -->
+            <div class="hourly-forecast__icon_container">
+              <img id="hourly-forecast__icon-19" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (19) temps -->
+            <p class="hourly-forecast__next-19-hour--temps m-0 text-primary pl-1 font-size-1">00°</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- E) Next three days forecast TITLE -->
+      <div class="next-3-days-forecast__title col-12 d-none d-md-none justify-content-center align-items-center">
+        <h5 class="font-weight-bold m-0 p-1 border-top border-bottom border-primary bg-secondary px-3">Next 3 days weather</h5>
+      </div>
+
+      <!-- E) Next three days forecast CONTENT -->
+      <div class="col-12 d-md-none bg-secondary">
+        <div class="next-3-days-forecast row d-flex justify-content-around border-top border-primary">
+          <!-- Next (1) day forecast card -->
+          <div class="next-3-days-forecast__content-container col-3 p-0 d-flex flex-column justify-content-around align-items-center">
+            <!-- Next (1) day -->
+            <div class="next-3-days-forecast__next-1-day--name my-1 font-weight-bold">Day</div>
+            <!-- Next (1) forecast icon -->
+            <div class="next-3-days-forecast__icon_container">
+              <img id="next-3-days-forecast__icon-1" class="weather-icon rotate" src="/img/placeholder_image_x2.png" alt="" srcset="">
+            </div>
+            <!-- Next (1) Max temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Max
+              </div>
+              <i class="fas fa-long-arrow-alt-up m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-1-day--max-temp text-primary font-size-1">00°</div>
+            </div>
+            <!-- Next (1) Min temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Min
+              </div>
+              <i class="fas fa-long-arrow-alt-down m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-1-day--min-temp text-primary font-size-1">00°</div>
+            </div>
+          </div>
+          
+          
+          <!-- Next (2) day forecast card -->
+          <div class="next-3-days-forecast__content-container col-3 p-0 d-flex flex-column justify-content-around align-items-center">
+            <!-- Next (2) day -->
+            <div class="next-3-days-forecast__next-2-day--name my-1 font-weight-bold">Day</div>
+            <!-- Next (2) forecast icon -->
+            <div class="next-3-days-forecast__icon_container">
+              <img id="next-3-days-forecast__icon-2" class="weather-icon rotate" src="/img/placeholder_image_x2.png" alt="" srcset="">
+            </div>
+            <!-- Next (2) Max temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Max
+              </div>
+              <i class="fas fa-long-arrow-alt-up m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-2-day--max-temp text-primary font-size-1">00°</div>
+            </div>
+            <!-- Next (2) Min temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Min
+              </div>
+              <i class="fas fa-long-arrow-alt-down m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-2-day--min-temp text-primary font-size-1">00°</div>
+            </div>
+          </div>
+          
+          <!-- Next (3) day forecast card -->
+          <div class="next-3-days-forecast__content-container col-3 p-0 d-flex flex-column justify-content-around align-items-center">
+            <!-- Next (3) day -->
+            <div class="next-3-days-forecast__next-3-day--name my-1 font-weight-bold">Day</div>
+            <!-- Next (3) forecast icon -->
+            <div class="next-3-days-forecast__icon_container">
+              <img id="next-3-days-forecast__icon-3" class="weather-icon rotate" src="/img/placeholder_image_x2.png" alt="" srcset="">
+            </div>
+            <!-- Next (3) Max temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Max
+              </div>
+              <i class="fas fa-long-arrow-alt-up m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-3-day--max-temp text-primary font-size-1">00°</div>
+            </div>
+            <!-- Next (3) Min temp -->
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="daily-stats__section-subtitle my-1">
+                Min
+              </div>
+              <i class="fas fa-long-arrow-alt-down m-0 pl-1"></i>
+              <div class="next-3-days-forecast__next-3-day--min-temp text-primary font-size-1">00°</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- F) Next five days forecast TITLE -->
+      <div class="next-5-days-forecast__title col-12 d-none d-lg-none justify-content-center align-items-center my-2 my-lg-4">
+        <h5 class="font-weight-bold m-0 p-1 border-top border-bottom border-primary bg-secondary px-3">Next 5 days weather</h5>
+      </div>
+
+      <!-- F) Next five days forecast CONTENT -->
+      <div class="col-12 d-none d-md-flex">
+        <div class="next-5-days-forecast row d-flex justify-content-around border-primary">
+          <!-- Next (1) day forecast card -->
+          <div class="next-5-days-forecast col-12 d-flex justify-content-around align-items-center border-bottom border-top border-primary bg-secondary mb-2">
+            <!-- Next (1) day and month -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__next-1-day--name m-0 mr-2 font-weight-bold">Day</p>
+              <p class="next-5-days-forecast__next-1-day--date m-0 font-weight-bold">00/00</p>
+            </div>
+            <!-- Next (1) forecast icon -->
+            <div class="next-5-days-forecast__icon_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center h-100 text-center">
+              <img id="next-5-days-forecast__icon-1" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (1) max temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Max</p>
+              <i class="fas fa-long-arrow-alt-up mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-1-day--max-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (1) min temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Min</p>
+              <i class="fas fa-long-arrow-alt-down mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-1-day--min-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (1) humidity -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Humidity</p>
+              <i class="fas fa-tint mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-1-day--humidity-percentage m-0 text-primary font-size-1">00</p>
+            </div>
+            <!-- Next (1) rain chance -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Rain</p>
+              <i class="fas fa-umbrella mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-1-day--rain-chance m-0 text-primary font-size-1">00%</p>
+            </div>
+          </div>
+          <!-- Next (2) day forecast card -->
+          <div class="next-5-days-forecast col-12 d-flex justify-content-around align-items-center border-bottom border-top border-primary bg-secondary mb-2">
+            <!-- Next (2) day and month -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__next-2-day--name m-0 mr-2 font-weight-bold">Day</p>
+              <p class="next-5-days-forecast__next-2-day--date m-0 font-weight-bold">00/00</p>
+            </div>
+            <!-- Next (2) forecast icon -->
+            <div class="next-5-days-forecast__icon_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <img id="next-5-days-forecast__icon-2" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (2) max temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Max</p>
+              <i class="fas fa-long-arrow-alt-up mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-2-day--max-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (2) min temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Min</p>
+              <i class="fas fa-long-arrow-alt-down mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-2-day--min-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (2) humidity -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Humidity</p>
+              <i class="fas fa-tint mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-2-day--humidity-percentage m-0 text-primary font-size-1">00</p>
+            </div>
+            <!-- Next (2) rain chance -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Rain</p>
+              <i class="fas fa-umbrella mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-2-day--rain-chance m-0 text-primary font-size-1">00%</p>
+            </div>
+          </div>
+          <!-- Next (3) day forecast card -->
+          <div class="next-5-days-forecast col-12 d-flex justify-content-around align-items-center border-bottom border-top border-primary bg-secondary mb-2">
+            <!-- Next (3) day and month -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__next-3-day--name m-0 mr-2 font-weight-bold">Day</p>
+              <p class="next-5-days-forecast__next-3-day--date m-0 font-weight-bold">00/00</p>
+            </div>
+            <!-- Next (3) forecast icon -->
+            <div class="next-5-days-forecast__icon_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <img id="next-5-days-forecast__icon-3" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (3) max temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Max</p>
+              <i class="fas fa-long-arrow-alt-up mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-3-day--max-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (3) min temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Min</p>
+              <i class="fas fa-long-arrow-alt-down mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-3-day--min-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (3) humidity -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Humidity</p>
+              <i class="fas fa-tint mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-3-day--humidity-percentage m-0 text-primary font-size-1">00</p>
+            </div>
+            <!-- Next (3) rain chance -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Rain</p>
+              <i class="fas fa-umbrella mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-3-day--rain-chance m-0 text-primary font-size-1">00%</p>
+            </div>
+          </div>
+          <!-- Next (4) day forecast card -->
+          <div class="next-5-days-forecast col-12 d-flex justify-content-around align-items-center border-bottom border-top border-primary bg-secondary mb-2">
+            <!-- Next (4) day and month -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row  justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__next-4-day--name m-0 mr-2 font-weight-bold">Day</p>
+              <p class="next-5-days-forecast__next-4-day--date m-0 font-weight-bold">00/00</p>
+            </div>
+            <!-- Next (4) forecast icon -->
+            <div class="next-5-days-forecast__icon_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <img id="next-5-days-forecast__icon-4" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (4) max temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Max</p>
+              <i class="fas fa-long-arrow-alt-up mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-4-day--max-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (4) min temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Min</p>
+              <i class="fas fa-long-arrow-alt-down mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-4-day--min-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (4) humidity -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Humidity</p>
+              <i class="fas fa-tint mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-4-day--humidity-percentage m-0 text-primary font-size-1">00</p>
+            </div>
+            <!-- Next (4) rain chance -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Rain</p>
+              <i class="fas fa-umbrella mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-4-day--rain-chance m-0 text-primary font-size-1">00%</p>
+            </div>
+          </div>
+          <!-- Next (5) day forecast card -->
+          <div class="next-5-days-forecast col-12 d-flex justify-content-around align-items-center border-top border-primary bg-secondary">
+            <!-- Next (5) day and month -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__next-5-day--name m-0 mr-2 font-weight-bold">Day</p>
+              <p class="next-5-days-forecast__next-5-day--date m-0 font-weight-bold">00/00</p>
+            </div>
+            <!-- Next (5) forecast icon -->
+            <div class="next-5-days-forecast__icon_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <img id="next-5-days-forecast__icon-5" class="weather-icon rotate" src="/img/placeholder_image_x1.png" alt="" srcset="">
+            </div>
+            <!-- Next (5) max temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Max</p>
+              <i class="fas fa-long-arrow-alt-up mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-5-day--max-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (5) min temp -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Min</p>
+              <i class="fas fa-long-arrow-alt-down mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-5-day--min-temp m-0 text-primary font-size-1">00°</p>
+            </div>
+            <!-- Next (5) humidity -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Humidity</p>
+              <i class="fas fa-tint mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-5-day--humidity-percentage m-0 text-primary font-size-1">00</p>
+            </div>
+            <!-- Next (5) rain chance -->
+            <div class="next-5-days-forecast__content_container d-flex flex-column-reverse flex-lg-row justify-content-around align-items-center text-center">
+              <p class="next-5-days-forecast__content-description m-0 ml-md-0 ml-lg-2 mr-md-0 mr-1">Rain</p>
+              <i class="fas fa-umbrella mr-lg-1 ml-lg-2"></i>
+              <p class="next-5-days-forecast__next-5-day--rain-chance m-0 text-primary font-size-1">00%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
